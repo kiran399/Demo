@@ -1,7 +1,8 @@
 // Hello
 
 // Welcome
-
+ // Hii
+  
 ALTER TABLE `ml_member` CHANGE `left_commission` `left_carry_forword` FLOAT NULL DEFAULT NULL;
 ALTER TABLE `ml_member` CHANGE `right_commission` `right_carry_forword` FLOAT NULL DEFAULT NULL;
 ALTER TABLE `ml_binary_commission` ADD `commission` FLOAT NULL AFTER `right_business`;
