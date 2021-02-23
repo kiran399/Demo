@@ -1,0 +1,63 @@
+ALTER TABLE `ml_member` CHANGE `left_commission` `left_carry_forword` FLOAT NULL DEFAULT NULL;
+ALTER TABLE `ml_member` CHANGE `right_commission` `right_carry_forword` FLOAT NULL DEFAULT NULL;
+ALTER TABLE `ml_binary_commission` ADD `commission` FLOAT NULL AFTER `right_business`;
+ALTER TABLE `ml_binary_commission`
+  DROP `left_commission`,
+  DROP `right_commision`;
+
+ALTER TABLE `ml_binary_commission` CHANGE `total_commision` `amount` FLOAT NULL DEFAULT NULL;
+
+ALTER TABLE `ml_binary_commission` CHANGE `insertdate` `insert_date` DATETIME NULL DEFAULT NULL;
+ALTER TABLE `ml_member`
+  DROP `left_carry_forword`,
+  DROP `right_carry_forword`;
+ALTER TABLE `ml_member` ADD `bank_name` VARCHAR(255) NULL AFTER `position`;
+
+
+controllers
+cron/cron_roi_income.php
+cron_cron_binary_commission.php
+
+
+suratcot_vedrishi
+suratcot_ved
+ved@rishi
+
+
+
+
+
+26-4-2020
+
+ALTER TABLE `ml_member` ADD `last_re_entry_id` INT NULL AFTER `re_entry_count`;
+create index t1 on `ml_member`(id);
+create index t2 on `ml_member`(parent_id);
+create index t3 on `ml_member`(sponser_code);
+create index t4 on `ml_member`(immediate_upline);
+create index t5 on `ml_member`(id,parent_id);
+create index t6 on `ml_member`(re_entry);
+create index t7 on `ml_member`(re_entry_count);
+create index t8 on `ml_member`(last_re_entry_id);
+create index t9 on `ml_member`(stage_income_by_me);
+create index t1 on `ml_register_sponsor`(immediate_upline);
+create index t1 on `ml_reentry_ids`(member_id);
+
+
+
+cron_re_entry
+cronmodel
+site_helper
+admin/pin_process controller
+user/login controller
+user/register controller
+user/pinlist controller
+user/receivedpin controller
+core/common_controller
+core/common_model
+database_trucate
+changes.txt
+
+whole database.
+
+
+
