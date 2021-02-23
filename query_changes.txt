@@ -1,3 +1,5 @@
+// Tables
+
 CREATE TABLE `campaign_user_data` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
