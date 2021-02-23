@@ -1,0 +1,43 @@
+CREATE TABLE `campaign_user_data` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+ `dateofbirth` date DEFAULT NULL,
+ `contact_no` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+ `country_code` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+ `json_data` text COLLATE utf8_unicode_ci,
+ `created_date` datetime DEFAULT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+ALTER TABLE `campaign_user_data` ADD `role_id` INT NULL AFTER `json_data`;
+ALTER TABLE `campaign_user_role` CHANGE `campaign_id` `campaign_id` VARCHAR(255) NULL DEFAULT NULL;
+ALTER TABLE `campaign_user_data` ADD `campaign_id` VARCHAR(255) NULL AFTER `role_id`;
+
+
+CREATE TABLE `user_roles` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+ `user_id` int(11) DEFAULT NULL COMMENT 'subclient user id',
+ `created_at` datetime DEFAULT NULL,
+ `updated_at` datetime DEFAULT NULL,
+ `is_deleted` tinyint(1) DEFAULT NULL COMMENT '0=not deleted, 1= deleted',
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+ALTER TABLE `user_roles` CHANGE `is_deleted` `is_deleted` TINYINT(1) NULL DEFAULT '0' COMMENT '0=not deleted, 1= deleted';
+ALTER TABLE `user_roles` ADD `campaign_id` INT NULL AFTER `user_id`;
+RENAME TABLE `ploto_dev_db`.`user_roles` TO `ploto_dev_db`.`campaign_user_role`;
+
+
+CREATE TABLE `campaign_user_group` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+ `campaign_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+ `campaign_user_id` int(11) DEFAULT NULL,
+ `created_at` datetime NOT NULL,
+ `updated-at` datetime NOT NULL,
+ `is_deleted` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0=not deleted, 1= deleted',
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+
+
+
+ALTER TABLE `user_group` ADD `role_id` INT NULL DEFAULT NULL AFTER `group_conditions`;
